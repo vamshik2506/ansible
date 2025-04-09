@@ -1,5 +1,5 @@
 - name: Deploy user form web app
-  hosts: webservers
+  hosts: web
   become: yes
   roles:
     - webapp
