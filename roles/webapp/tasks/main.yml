@@ -1,0 +1,27 @@
+- name: Install Apache web server
+  apt:
+    name: apache2
+    state: present
+    update_cache: yes
+
+- name: Copy user form HTML file to web server
+  copy:
+    src: userform.html
+    dest: /var/www/html/index.html
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Copy PHP script to handle form submissions
+  copy:
+    src: save.php
+    dest: /var/www/html/save.php
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Ensure Apache is started and enabled
+  service:
+    name: apache2
+    state: started
+    enabled: yes
