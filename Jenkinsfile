@@ -10,7 +10,8 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                sh 'ansible-playbook -i inventory/hosts site.yml'
+               sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory/hosts site.yml'
+
             }
         }
     }
